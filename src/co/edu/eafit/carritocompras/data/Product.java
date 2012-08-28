@@ -36,6 +36,8 @@ public abstract class Product {
 		} else if (code.startsWith("FU")) {
 			return new Furniture(code, "Furniture_"+code, productPricesBD.get(code));
 		}
+		
+		throw new IllegalArgumentException("Code does not start with EL or FU");
 	}
 	
 	public String getCode() {
@@ -60,6 +62,10 @@ public abstract class Product {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public static Map<String, BigDecimal> getProductPricesBD() {
+		return productPricesBD;
 	}
 
 }
